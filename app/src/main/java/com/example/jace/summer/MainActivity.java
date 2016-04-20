@@ -1,40 +1,42 @@
 package com.example.jace.summer;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText input1;
-    EditText input2;
-    TextView finalSum;
-    Button addButton;
+    EditText num1, num2;
+    TextView textSum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        input1 = (EditText)findViewById(R.id.input1);
-        input2 = (EditText)findViewById(R.id.input2);
-        finalSum = (TextView)findViewById(R.id.textView);
-        addButton = (Button)findViewById(R.id.addbutton);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int int1 = Integer.parseInt(input1.getText().toString());
-                int int2 = Integer.parseInt(input2.getText().toString());
-                int sum = sum(int1, int2);
-                finalSum.setText("HAHA");
-            }
-        });
+
+
     }
 
+    public void add(View v) {
+        int n1, n2;
+        num1 = (EditText) findViewById(R.id.num1);
+        num2 = (EditText) findViewById(R.id.num2);
+        textSum = (TextView) findViewById(R.id.sum);
+
+        n1 = Integer.parseInt(num1.getText().toString());
+        n2 = Integer.parseInt(num2.getText().toString());
+
+
+        textSum.setText(Integer.toString(sum(n1,n2)));
+    }
+
+    public int sum( int n1, int n2){
+        return n1 - n2;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -55,11 +57,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public int sum(int num1, int num2){
-
-        return num1 + num2;
-
     }
 }
